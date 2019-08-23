@@ -40,6 +40,8 @@ win_base_job: &win_base_job
   os: windows
   language: sh
   before_install:
+    - python --version
+    - choco list
     - choco install python --version $PYTHON_VERSION
     - python -m pip install --upgrade pip
   install:
