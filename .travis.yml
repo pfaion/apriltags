@@ -40,15 +40,12 @@ win_base_job: &win_base_job
   os: windows
   language: sh
   before_install:
-    # - choco install python --version $PYTHON_VERSION
-    - which python
-    - python --version
-    - ls /c/ProgramData/chocolatey/bin/
-    - choco list --local-only
-    - python3 -m pip install --upgrade pip
+    - choco install python --version $PYTHON_VERSION
+    - python -m pip install --upgrade pip
   install:
-    - python3 -m pip install -r requirements_dev.txt
-    - python3 ./setup.py bdist_wheel
+    - python -m pip install -r requirements_dev.txt
+    - python ./setup.py build -G "Visual Studio 15 2017 Win64"
+    - python ./setup.py bdist_wheel
 
 ubuntu_base_job: &ubuntu_base_job
   os: linux
