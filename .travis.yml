@@ -42,8 +42,9 @@ win_base_job: &win_base_job
   before_install:
     # - choco install python --version $PYTHON_VERSION
     - which python
-    - which python3
     - python --version
+    - ls /c/ProgramData/chocolatey/bin/
+    - choco list --local-only
     - python3 -m pip install --upgrade pip
   install:
     - python3 -m pip install -r requirements_dev.txt
