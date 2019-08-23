@@ -41,6 +41,9 @@ win_base_job: &win_base_job
   language: sh
   before_install:
     # - choco install python --version $PYTHON_VERSION
+    - which python
+    - which python3
+    - python --version
     - python3 -m pip install --upgrade pip
   install:
     - python3 -m pip install -r requirements_dev.txt
