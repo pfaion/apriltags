@@ -40,13 +40,11 @@ win_base_job: &win_base_job
   os: windows
   language: sh
   before_install:
-    - python --version
-    - choco list
-    - choco install python --version $PYTHON_VERSION
-    - python -m pip install --upgrade pip
+    # - choco install python --version $PYTHON_VERSION
+    - python3 -m pip install --upgrade pip
   install:
-    - pip install -r requirements_dev.txt
-    - python ./setup.py bdist_wheel
+    - python3 -m pip install -r requirements_dev.txt
+    - python3 ./setup.py bdist_wheel
 
 ubuntu_base_job: &ubuntu_base_job
   os: linux
