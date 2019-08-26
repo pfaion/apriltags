@@ -40,7 +40,8 @@ win_base_job: &win_base_job
   os: windows
   language: sh
   before_install:
-    - choco uninstall mingw
+    - chmod +x ./.travis/print_path.sh
+    - ./.travis/print_path.sh
     - choco install python --version $PYTHON_VERSION
     - python -m pip install --upgrade pip
   install:
