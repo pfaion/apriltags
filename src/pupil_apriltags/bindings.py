@@ -23,6 +23,7 @@ import numpy
 
 from . import logger
 
+
 ######################################################################
 
 # pylint: disable=R0903
@@ -263,6 +264,13 @@ class Detector(object):
             "Windows": "*apriltag*.dll",
         }
         filename_pattern = filename_patterns_by_platform[platform.system()]
+
+        
+        if platform.system() == "Windows":
+            import pupil_pthreads_win
+            dll_path = str(pupil_pthreads_win.dll_path.parent.resolve())
+            os.environ["PATH"] = dll_path + os.pathsep + os.environ["PATH"]
+
 
         self.libc = None
         self.tag_detector = None
