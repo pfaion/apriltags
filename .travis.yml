@@ -42,12 +42,14 @@ win_base_job: &win_base_job
   before_install:
     - chmod +x ./.travis/print_path.sh
     - ./.travis/print_path.sh
-    - choco install vcredist140
     - choco install python --version $PYTHON_VERSION
     - python -m pip install --upgrade pip
   install:
     - python -m pip install -r requirements_dev.txt
     - python ./setup.py bdist_wheel -G "Visual Studio 15 2017 Win64"
+    - python -m pip install .
+  script:
+    - python -c "from pupil_apriltag import Detector; d = Detector()"
 
 ubuntu_base_job: &ubuntu_base_job
   os: linux
@@ -130,8 +132,8 @@ matrix:
 # RUN AND DEPLOY (OS INDEPENDENT)
 ################################################################################
 
-script:
-  - tox --installpkg ./dist/pupil_apriltags*.whl || true
+# script:
+#   - tox --installpkg ./dist/pupil_apriltags*.whl || true
 
 deploy_template: &deploy_template
   on:
