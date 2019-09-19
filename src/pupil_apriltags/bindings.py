@@ -270,6 +270,7 @@ class Detector(object):
             import pupil_pthreads_win
             dll_path = str(pupil_pthreads_win.dll_path.parent.resolve())
             os.environ["PATH"] = dll_path + os.pathsep + os.environ["PATH"]
+            print(os.environ["PATH"])
 
 
         self.libc = None
@@ -280,10 +281,10 @@ class Detector(object):
             Path(path).glob(filename_pattern) for path in searchpath
         )
         for hit in possible_hits:
-            logger.debug(f"Testing possible hit: {hit}...")
+            print(f"Testing possible hit: {hit}...")
             self.libc = ctypes.CDLL(str(hit))
             if self.libc:
-                logger.debug(f"Found working clib at {hit}")
+                print(f"Found working clib at {hit}")
                 break
         else:
             raise RuntimeError(
