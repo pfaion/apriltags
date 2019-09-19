@@ -46,7 +46,7 @@ win_base_job: &win_base_job
     - python -m pip install --upgrade pip
   install:
     - python -m pip install -r requirements_dev.txt
-    - python ./setup.py bdist_wheel -G "Visual Studio 15 2017 Win64"
+    - python ./setup.py bdist_wheel
 
 ubuntu_base_job: &ubuntu_base_job
   os: linux
