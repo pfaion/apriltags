@@ -42,7 +42,7 @@ win_base_job: &win_base_job
   before_install:
     - chmod +x ./.travis/print_path.sh
     - ./.travis/print_path.sh
-    - choco uninstall mingw
+    - choco install vcredist140
     - choco install python --version $PYTHON_VERSION
     - python -m pip install --upgrade pip
   install:
