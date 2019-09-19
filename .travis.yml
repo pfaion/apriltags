@@ -133,18 +133,18 @@ matrix:
 script:
   - tox --installpkg ./dist/pupil_apriltags*.whl || true
 
-deploy_template: &deploy_template
-  on:
-    # tags: true
-    branch: travis_testing
-  skip_cleanup: true
+# deploy_template: &deploy_template
+#   on:
+#     # tags: true
+#     branch: travis_testing
+#   skip_cleanup: true
 
-deploy:
-  - provider: releases
-    <<: *deploy_template
-    api_key: $GitHubOAUTH
-    file_glob: true
-    file: "./dist/pupil_apriltags*.whl"
+# deploy:
+#   - provider: releases
+#     <<: *deploy_template
+#     api_key: $GitHubOAUTH
+#     file_glob: true
+#     file: "./dist/pupil_apriltags*.whl"
   # - provider: script
   #   <<: *deploy_template
   #   script: bash ./.travis/pypi_deploy.sh
