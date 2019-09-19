@@ -15,10 +15,7 @@ from setuptools.dist import Distribution
 with open("README.md") as readme_file:
     readme = readme_file.read()
 
-requirements = [
-    "numpy",
-    "pupil-pthreads-win @ git+https://github.com/pupil-labs/pupil-pthreads-win.git@add_gcc_prebuilds"
-]
+requirements = ["numpy", "pupil-pthreads-win"]
 
 setup_requirements = ["scikit-build", "ninja", "pytest-runner"]
 
@@ -47,7 +44,7 @@ if platform.system() == "Windows":
 
     import pupil_pthreads_win as ptw
     cmake_args.append(f"-DPTHREADS_WIN_INCLUDE_DIR='{ptw.include_path}'")
-    cmake_args.append(f"-PTHREADS_WIN_LIB_DIR='{ptw.lib_path}'")
+    cmake_args.append(f"-DPTHREADS_WIN_IMPORT_LIB_PATH='{ptw.import_lib_path}'")
 
 
 setup(
