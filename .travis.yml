@@ -49,7 +49,7 @@ win_base_job: &win_base_job
     # - python ./setup.py bdist_wheel -G "Visual Studio 15 2017 Win64"
     - python ./setup.py install -G "Visual Studio 15 2017 Win64"
   script:
-    - python -c "from pupil_apriltag import Detector; d = Detector()"
+    - python -c "from pupil_apriltags import Detector; d = Detector()"
 
 ubuntu_base_job: &ubuntu_base_job
   os: linux
