@@ -48,7 +48,7 @@ win_base_job: &win_base_job
     - python -m pip install -r requirements_dev.txt
     # - python ./setup.py bdist_wheel -G "Visual Studio 15 2017 Win64"
     - python ./setup.py install -G "Visual Studio 15 2017 Win64"
-    - python -c "import glob; print(*glob.glob('C:\Windows\system32\*'), sep='\n')"
+    - python -c "import sys;print(sys.version)"
   script:
     - python -c "from pupil_apriltags import Detector; d = Detector()"
 
