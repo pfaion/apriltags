@@ -9,7 +9,7 @@ env_py36: &env_py36
     - PYTHON_VERSION=3.6.8
     - PY_MM=36
     - TOXENV=py${PY_MM}
-    - PATH=/c/Python${PY_MM}:/c/Python${PY_MM}/Scripts:$PATH
+    - PATH=/c/Python36/Lib/site-packages/pupil_pthreads_win/data/lib/x64:/c/Python${PY_MM}:/c/Python${PY_MM}/Scripts:$PATH
 env_py37: &env_py37
   env:
     - PYTHON_VERSION=3.7.4
