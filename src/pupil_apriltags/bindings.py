@@ -282,7 +282,7 @@ class Detector(object):
         )
         for hit in possible_hits:
             print(f"Testing possible hit: {hit}...")
-            self.libc = ctypes.windll(str(hit))
+            self.libc = ctypes.WinDLL(str(hit))
             if self.libc:
                 print(f"Found working clib at {hit}")
                 break
