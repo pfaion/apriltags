@@ -7,6 +7,6 @@ flake8==3.5.0
 tox==3.5.2
 coverage==4.5.1
 twine==1.12.1
-pupil-pthreads-win==2
+git+https://github.com/pupil-labs/pupil-pthreads-win.git@add_gcc_prebuilds
 pytest==3.8.2
 pytest-runner==4.2
