@@ -2,14 +2,14 @@
 # ENVIRONMENT TEMPLATES
 ################################################################################
 
-# can't merge arrays in YAML so we have to duplicate stuff between 36 adn 37
+# can't merge arrays in YAML so we have to duplicate stuff between 36 and 37
 # and include all variables that are relevant across all operating systems
 env_py36: &env_py36
   env:
     - PYTHON_VERSION=3.6.8
     - PY_MM=36
     - TOXENV=py${PY_MM}
-    - PATH=/c/Python36/Lib/site-packages/pupil_pthreads_win/data/lib/x64:/c/Python${PY_MM}:/c/Python${PY_MM}/Scripts:$PATH
+    - PATH=/c/Python${PY_MM}:/c/Python${PY_MM}/Scripts:$PATH
 env_py37: &env_py37
   env:
     - PYTHON_VERSION=3.7.4
@@ -40,15 +40,14 @@ win_base_job: &win_base_job
   os: windows
   language: sh
   before_install:
-    # - chmod +x ./.travis/print_path.sh
-    # - ./.travis/print_path.sh
+    # vcredist2010 is required for loading the apriltags.dll when building with msvc.
+    # I don't know why exactly, but loading the DLL will fail otherwise on travis.
     - choco install vcredist2010
     - choco install python --version $PYTHON_VERSION
     - python -m pip install --upgrade pip
   install:
     - python -m pip install -r requirements_dev.txt
     - python ./setup.py bdist_wheel -G "Visual Studio 15 2017 Win64"
-    # - python ./setup.py install -G "Visual Studio 15 2017 Win64"
 
 ubuntu_base_job: &ubuntu_base_job
   os: linux
@@ -132,7 +131,7 @@ matrix:
 ################################################################################
 
 script:
-  - tox --installpkg ./dist/pupil_apriltags*.whl || true
+  - tox --installpkg ./dist/pupil_apriltags*.whl
 
 deploy_template: &deploy_template
   on:
