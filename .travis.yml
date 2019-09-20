@@ -135,7 +135,7 @@ script:
 
 deploy_template: &deploy_template
   on:
-    # tags: true
+    tags: true
     branch: travis_testing
   skip_cleanup: true
 
