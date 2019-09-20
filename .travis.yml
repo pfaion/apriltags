@@ -95,35 +95,35 @@ ubuntu_bionic_base_job: &ubuntu_bionic_base_job
 
 matrix:
   include:
-    # - name: "Python 3.6.8 on OSX 10.10 (xcode6.4)"
-    #   <<: *osx_base_job
-    #   <<: *env_py36
+    - name: "Python 3.6.8 on OSX 10.10 (xcode6.4)"
+      <<: *osx_base_job
+      <<: *env_py36
 
-    # - name: "Python 3.7.4 on OSX 10.10 (xcode6.4)"
-    #   <<: *osx_base_job
-    #   <<: *env_py37
+    - name: "Python 3.7.4 on OSX 10.10 (xcode6.4)"
+      <<: *osx_base_job
+      <<: *env_py37
 
     - name: "Python 3.6.8 on Windows"
       <<: *win_base_job
       <<: *env_py36
     
-    # - name: "Python 3.7.4 on Windows"
-    #   <<: *win_base_job
-    #   <<: *env_py37
+    - name: "Python 3.7.4 on Windows"
+      <<: *win_base_job
+      <<: *env_py37
 
-    # - name: "Python 3.6.8 on Ubuntu 14.04 (using manylinux wheel)"
-    #   <<: *ubuntu_trusty_base_job
-    #   <<: *env_py36
+    - name: "Python 3.6.8 on Ubuntu 14.04 (using manylinux wheel)"
+      <<: *ubuntu_trusty_base_job
+      <<: *env_py36
 
-    # - name: "Python 3.6.8 on Ubuntu 18.04 (using manylinux wheel)"
-    #   <<: *ubuntu_bionic_base_job
-    #   python: 3.6.8
-    #   <<: *env_py36
+    - name: "Python 3.6.8 on Ubuntu 18.04 (using manylinux wheel)"
+      <<: *ubuntu_bionic_base_job
+      python: 3.6.8
+      <<: *env_py36
     
-    # - name: "Python 3.7.4 on Ubuntu 18.04 (using manylinux wheel)"
-    #   <<: *ubuntu_bionic_base_job
-    #   python: 3.7.4
-    #   <<: *env_py37
+    - name: "Python 3.7.4 on Ubuntu 18.04 (using manylinux wheel)"
+      <<: *ubuntu_bionic_base_job
+      python: 3.7.4
+      <<: *env_py37
 
 
 ################################################################################

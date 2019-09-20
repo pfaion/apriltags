@@ -267,10 +267,11 @@ class Detector(object):
 
         
         if platform.system() == "Windows":
+            # the apriltags dll depends on pthreads-win, we inject our pre-built libs
+            # into the path before loading with ctypes
             import pupil_pthreads_win
             dll_path = str(pupil_pthreads_win.dll_path.parent.resolve())
             os.environ["PATH"] = dll_path + os.pathsep + os.environ["PATH"]
-            print(os.environ["PATH"])
 
 
         self.libc = None
@@ -281,10 +282,10 @@ class Detector(object):
             Path(path).glob(filename_pattern) for path in searchpath
         )
         for hit in possible_hits:
-            print(f"Testing possible hit: {hit}...")
-            self.libc = ctypes.WinDLL(str(hit))
+            logger.debug(f"Testing possible hit: {hit}...")
+            self.libc = ctypes.CDLL(str(hit))
             if self.libc:
-                print(f"Found working clib at {hit}")
+                logger.debug(f"Found working clib at {hit}")
                 break
         else:
             raise RuntimeError(
